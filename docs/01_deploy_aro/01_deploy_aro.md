@@ -1,5 +1,5 @@
 ---
-title: 'Step 1: Deploy ARO'
+title: 'Deploy Azure Red Hat OpenShift'
 layout: default
 nav_order: 3
 has_children: true
