@@ -8,7 +8,7 @@ aux_links:
   "Azure Red Hat OpenShift Integration lab on GitHub": 
     - "https://github.com/erleonard/aro-deployment"
 
-
+enable_copy_code_button: true
 callouts_level: quiet # or loud
 callouts:
   highlight:
