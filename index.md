@@ -4,7 +4,7 @@ layout: home
 nav_order: 1
 ---
 
-# Lab: Deploying and Integrating Azure Red Hat OpenShift
+# Deploying and Integrating Azure Red Hat OpenShift
 intro
 
 ## Modules
