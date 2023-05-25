@@ -8,7 +8,8 @@ has_children: true
 # Step 1
 
 ## Architecture
-info
+
+![architecture](../../images/aro-architecture.png)
 
 ## Objectives
 info

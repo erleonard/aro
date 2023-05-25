@@ -1,5 +1,5 @@
 ---
-title: 'Step 2: Configure Azure ARC for Observibility'
+title: 'Configure Azure Integrations'
 layout: default
 nav_order: 4
 has_children: true
