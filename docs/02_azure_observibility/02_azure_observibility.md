@@ -1,5 +1,5 @@
 ---
-title: 'Step 2: Configure Azure ARC for Observibility (Azure Monitor)'
+title: 'Step 2: Configure Azure ARC for Observibility'
 layout: default
 nav_order: 4
 has_children: true
