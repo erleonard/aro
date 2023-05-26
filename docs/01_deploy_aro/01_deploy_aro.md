@@ -5,14 +5,14 @@ nav_order: 3
 has_children: true
 ---
 
-# Step 1
+# Deploy Azure Red Hat OpenShift
 
 ## Architecture
 
 ![architecture](../../images/aro-architecture.png)
 
 ## Objectives
-info
+In this section you will deploy Azure Red Hat OpenShift 4.
 
 ## Workshop Duration
 - **Estimated Time**: 60 minutes
@@ -20,6 +20,6 @@ info
 ## Instructions
 
 During this workshop, you will:
-- item 1
-- item 2
-- item 3
+- Deploy Azure Red Hat OpenShift using the Azure CLI
+- Access the OpenShift Web Console
+- Access OpenShift via CLI
