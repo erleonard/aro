@@ -5,20 +5,18 @@ nav_order: 4
 has_children: true
 ---
 
-# Step 2
+# Configure Azure Integrations
 
 ## Architecture
-info
+
+![architecture](../../images/aro-intergrations.png)
 
 ## Objectives
-info
-
-## Workshop Duration
-- **Estimated Time**: 60 minutes
+In this section you will deploy and integrate various Azure services into Azure Red Hat OpenShift 4.
 
 ## Instructions
 
-During this workshop, you will:
-- item 1
-- item 2
-- item 3
+In this section, you will:
+- Configure Azure Active Directory authentication
+- Configure Azure Container Registry
+- Configure Azure ARC for Observibility
