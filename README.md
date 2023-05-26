@@ -6,7 +6,7 @@ This repository will focus on the integration of Azure Serives and Azure Red Hat
 
 ## Architecture
 
-![Azure Red Hat OpenShift Architecture](/diagrams/aro-public.png "Azure Red Hat OpenShift Architecture")
+![Azure Red Hat OpenShift Architecture](/images/aro-architecture.png "Azure Red Hat OpenShift Architecture")
 
 ## Getting Started
 

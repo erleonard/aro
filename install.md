@@ -14,7 +14,7 @@ The Azure CLI team maintains a script to run all installation commands in one st
 ```console
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
-[Source](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt#option-1-install-with-one-command){: .btn .btn-blue }
+[Reference](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt#option-1-install-with-one-command){: .btn .btn-blue }
 
 ## Install the OpenShift CLI
 
@@ -26,4 +26,4 @@ mkdir openshift
 tar -zxvf openshift-client-linux.tar.gz -C openshift
 echo 'export PATH=$PATH:~/openshift' >> ~/.bashrc && source ~/.bashrc
 ```
-[Source](https://learn.microsoft.com/en-us/azure/openshift/tutorial-connect-cluster#install-the-openshift-cli){: .btn .btn-blue }
+[Reference](https://learn.microsoft.com/en-us/azure/openshift/tutorial-connect-cluster#install-the-openshift-cli){: .btn .btn-blue }
