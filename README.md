@@ -2,7 +2,7 @@
 
 Azure Red Hat OpenShift (ARO) is a fully managed service of OpenShift on Microsoft Azure. It is jointly developed, operated, and supported by Microsoft and Red Hat. ARO provides a powerful platform for building, deploying, and scaling containerized applications using Kubernetes and other open-source technologies. You can learn more about it on the current web page context.
 
-This repository will focus on the integration of Azure Serives and Azure Red Hat OpenShift 4.
+This repository is a collections of learning on how to deploy, configure and operationalize Azure Red Hat OpenShift 4.
 
 ## Architecture
 
@@ -14,6 +14,7 @@ This repository will focus on the integration of Azure Serives and Azure Red Hat
 
 For running the steps in this lab you will need:
 
+- A GitHub account
 - Azure subscription (contributor and user access administrator role)
 
 ### Installation

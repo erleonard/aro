@@ -17,6 +17,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 [Reference](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt#option-1-install-with-one-command){: .btn .btn-blue }
 
 ## Install the OpenShift CLI
+Install the OpenShift CLI (oc) on your local machine. The oc CLI is used to manage OpenShift resources from the command line.
 
 ```console
 cd ~

@@ -12,10 +12,6 @@ has_children: true
 ![architecture](../../images/aro-architecture.png)
 
 ## Objectives
-In this section you will deploy Azure Red Hat OpenShift 4.
-
-## Instructions
-
 In this section, you will:
 - Deploy Azure Red Hat OpenShift using the Azure CLI
 - Access the OpenShift Web Console
