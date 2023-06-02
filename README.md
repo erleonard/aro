@@ -15,7 +15,10 @@ This repository is a collections of learning on how to deploy, configure and ope
 For running the steps in this lab you will need:
 
 - A GitHub account
-- Azure subscription (contributor and user access administrator role)
+- An Azure Subscription
+    - You must have sufficient permissions to deploy resources and assign RBAC
+    - You must have sufficient permissions to register an application with your Azure AD tenant
+- Visual Studio Code **OR** the Azure Cloud Shell
 
 ### Installation
 
