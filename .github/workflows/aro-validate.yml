@@ -1,0 +1,53 @@
+name: aro-deploy
+on:
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+      
+jobs: 
+  ARO-validate:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  
+    - name: 'Validate Azure provider registration'
+      run: |
+            PROVIDERREG=("Microsoft.RedHatOpenShift" "Microsoft.Compute" "Microsoft.Storage" "Microsoft.Authorization")
+
+            for provider in "${PROVIDERREG[@]}"
+            do
+                if [ "$(az provider show -n ${provider} --query "registrationState" -o tsv)" != "Registered" ]; then
+                    echo "Provider ${provider} is not registered"
+                    az provider register -n ${provider} --wait
+                else
+                    echo "Provider ${provider} is registered"
+                fi
+            done
+    - name: 'Validate ARO cluster CPU cores requirements'
+      run: |
+            AROCONTROLPLANEVMCORES="24"
+            ARONCOMPUTEVMCORES="12"
+            AROCORESREQ=$((${AROCONTROLPLANEVMCORES}+${ARONCOMPUTEVMCORES}))
+            
+            CORESUSED=$(az vm list-usage --location "East US" --query "[?localName=='Standard DSv3 Family vCPUs'].{CurrentValue:currentValue}" -o tsv)
+            CORESLIMIT=$(az vm list-usage --location "East US" --query "[?localName=='Standard DSv3 Family vCPUs'].{Limit:limit}" -o tsv)
+            CORESAVAIL=$((${CORESLIMIT}-${CORESUSED}))
+            
+            if [ "${AROCORESREQ}" -gt "${CORESAVAIL}" ]; then
+                echo "Insufficient cores in East US. This request requires: ${AROCORESREQ}"
+                echo "There are ${CORESAVAIL} DSv3 cores available in East US"
+                exit 1
+            else
+                echo "There are ${CORESAVAIL} DSv3 cores available in East US"
+            fi

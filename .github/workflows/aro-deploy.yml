@@ -1,0 +1,38 @@
+name: aro-deploy
+on:
+  #push:
+  #  branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+      
+jobs: 
+  infra-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Az CLI login'
+      uses: azure/login@v1
+      with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  
+    - name: 'Run Azure CLI commands to deploy infrastructure and ARO cluster'
+      run: |
+          LOCATION=eastus
+          RESOURCEGROUP=aro-rg
+          CLUSTER=arocluster
+          AROVNET=aro-vnet
+          
+          az group create --name $RESOURCEGROUP --location $LOCATION
+          az network vnet create --resource-group $RESOURCEGROUP --name $AROVNET --address-prefixes 10.114.0.0/16
+          az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name $AROVNET --name control-subnet --address-prefixes 10.114.0.0/23
+          az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name $AROVNET --name compute-subnet --address-prefixes 10.114.2.0/23
+          az network vnet subnet update --name control-subnet --resource-group $RESOURCEGROUP --vnet-name $AROVNET --disable-private-link-service-network-policies true
+    - name: 'Run Azure CLI commands to deploy ARO cluster'
+      run: |
+          az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet $AROVNET --master-subnet control-subnet --worker-subnet compute-subnet
