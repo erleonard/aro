@@ -1,4 +1,4 @@
-name: aro-deploy
+name: aro-validate
 on:
   push:
     branches: ["main"]

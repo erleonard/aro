@@ -1,9 +1,5 @@
 name: aro-destroy
 on:
-  #push:
-  #  branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -21,8 +17,10 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   
-    - name: 'Run Azure CLI commands'
+    - name: 'Delete ARO cluster service principal'
       run: |
-          az account show
-          az group list
-          pwd
+          arosp=$(az aro show --name arocluster --resource-group aro-rg --query servicePrincipalProfile.clientId -o tsv)
+          az ad sp delete --id $arosp
+    - name: 'Delete ARO cluster'
+      run: |
+          az aro delete --name arocluster --resource-group aro-rg --yes
